@@ -1,0 +1,12 @@
+#+TITLE: Adjunct
+
+* Introduction
+Adjunct is an emacs package that allows one to define tasks on the fly
+that you want to run frequently and easily.
+
+* Installation
+Simply require this package:
+
+#+begin_src emacs-lisp
+(require 'adjunct)
+#+end_src

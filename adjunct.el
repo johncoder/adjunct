@@ -19,7 +19,14 @@
 
 (require 'transient)
 
-(setq adjunct-command-map '())
+(setq adjunct-command-map nil)
+
+(defun adjunct-run ()
+  "Run a command."
+  (interactive)
+  (set (make-local-variable 'compile-command) "date -r 1594600586 +\"%Y-%m-%d\"")
+  (compile))
+
 
 (defun adjunct--simple-message ()
   "Just a simple message for use in testing."
@@ -28,10 +35,11 @@
 
 (define-transient-command adjunct-transient ()
   "Adjunct transient command."
-  ["Actions"
-   ("a" "Action a" adjunct--simple-message)
+  ["Actions" ("a" "Action a" adjunct--simple-message)
    ("b" "Action b" adjunct--simple-message)
-   ("c" "Action c" adjunct--simple-message)])
+   ("c" "Action c" adjunct--simple-message)
+   ("d" "Action d" adjunct--simple-message)
+   ("r" "Run a date command" adjunct-run)])
 
 (define-minor-mode adjunct-mode
   "Adjunct global minor mode."
